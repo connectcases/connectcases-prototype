@@ -24,6 +24,7 @@ var setUpClickableTeeth = function setUpClickableTeeth(){
         } else {
             $tooth.removeClass('missing');
         }
+        $(this).parents('.form-group').hide();
     })
 };
 
