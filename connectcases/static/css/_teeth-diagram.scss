@@ -1,0 +1,28 @@
+#teeth-diagram {
+    path {
+        fill: #fff;
+        stroke-width: 4;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        &:hover {
+            fill: #eee;
+        }
+
+        &:focus {
+            fill: #ddf;
+            stroke: #00f;
+            outline: none;
+        }
+    }
+
+    path.missing {
+        stroke: #ccc;
+        fill: #eee;
+
+        &:focus {
+            stroke: #00f;
+        }
+    }
+}
