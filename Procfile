@@ -1,1 +1,1 @@
-web: gunicorn myproject.wsgi --log-file -
+web: gunicorn --pythonpath connectcases wsgi.py --log-file -
