@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath connectcases wsgi.py --log-file -
+web: gunicorn --pythonpath connectcases wsgi --log-file -
