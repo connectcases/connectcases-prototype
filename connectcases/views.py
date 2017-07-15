@@ -1,23 +1,28 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 
+from .models import Device
 from .forms import DeviceForm
 
-class Index(View):
-    def get(self, request):
-        form = DeviceForm()
-        return render(request, 'connectcases/index.html', {'form': form})
+class IndexView(View):
+    def get(self, request, device_id=None):
+        return render(request, 'connectcases/index.html')
 
-    def post(self, request):
+class DeviceView(View):
+    def get(self, request, device_id=None):
+        if device_id:
+            device = get_object_or_404(Device, id=device_id)
+            form = DeviceForm(instance=device)
+        else:
+            form = DeviceForm()
+
+        return render(request, 'connectcases/device.html', {'form': form})
+
+    def post(self, request, device_id=None):
         form = DeviceForm(request.POST)
 
         if form.is_valid():
             device = form.save()
-            return redirect('device-created', device_id=device.id)
+            return redirect('device', device_id=device.id)
         else:
-            return render(request, 'connectcases/index.html', {'form': form})
-
-class DeviceCreated(View):
-    def get(self, request, device_id):
-        return render(request, 'connectcases/created.html', {'device_id': device_id})
-
+            return render(request, 'connectcases/device.html', {'form': form})

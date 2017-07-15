@@ -16,10 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from .views import Index, DeviceCreated
+from .views import DeviceView, IndexView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^device-created/(?P<device_id>\d+)/', DeviceCreated.as_view(), name='device-created'),
-    url(r'^', Index.as_view()),
+    url(r'^device(?:/(?P<device_id>\d+))?/', DeviceView.as_view(), name='device'),
+    url(r'^', IndexView.as_view()),
 ]
