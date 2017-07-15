@@ -89,7 +89,7 @@ class Device(models.Model):
     )
 
     def __str__(self):
-        return 'Device for {}'.format(self.patient.name)
+        return '({}) Device for {}'.format(self.id, self.patient.name)
 
 class Patient(models.Model):
     name = models.CharField(max_length=200)
