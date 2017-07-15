@@ -9,32 +9,52 @@ class DeviceForm(ModelForm):
     def clean_upper_colet_from(self):
         data = self.cleaned_data['upper_colet_from']
 
-        if self._missing_upper_teeth(self.cleaned_data) and data is None:
+        missing_upper = self._missing_upper_teeth(self.cleaned_data)
+
+        if missing_upper and data is None:
             raise ValidationError("This is required when upper teeth are missing")
+
+        if not missing_upper and data is not None:
+            raise ValidationError("This is not required when no upper teeth are missing")
 
         return data
 
     def clean_upper_colet_to(self):
         data = self.cleaned_data['upper_colet_to']
 
-        if self._missing_upper_teeth(self.cleaned_data) and data is None:
+        missing_upper = self._missing_upper_teeth(self.cleaned_data)
+
+        if missing_upper and data is None:
             raise ValidationError("This is required when upper teeth are missing")
+
+        if not missing_upper and data is not None:
+            raise ValidationError("This is not required when no upper teeth are missing")
 
         return data
 
     def clean_lower_colet_from(self):
         data = self.cleaned_data['lower_colet_from']
 
-        if self._missing_lower_teeth(self.cleaned_data) and data is None:
+        missing_lower = self._missing_lower_teeth(self.cleaned_data)
+
+        if missing_lower and data is None:
             raise ValidationError("This is required when lower teeth are missing")
+
+        if not missing_lower and data is not None:
+            raise ValidationError("This is not required when no lower teeth are missing")
 
         return data
 
     def clean_lower_colet_to(self):
         data = self.cleaned_data['lower_colet_to']
 
-        if self._missing_lower_teeth(self.cleaned_data) and data is None:
+        missing_lower = self._missing_lower_teeth(self.cleaned_data)
+
+        if missing_lower and data is None:
             raise ValidationError("This is required when lower teeth are missing")
+
+        if not missing_lower and data is not None:
+            raise ValidationError("This is not required when no lower teeth are missing")
  
         return data
 
