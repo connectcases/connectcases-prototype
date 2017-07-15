@@ -31,6 +31,8 @@ class DeviceForm(ModelForm):
         if not upper and not lower:
             raise ValidationError("Please select at least one tooth")
 
+        return cleaned_data
+
     def _missing_upper_teeth(self, cleaned_data):
         return cleaned_data['upper_left_1'] or \
                cleaned_data['upper_left_2'] or \
