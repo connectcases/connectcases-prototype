@@ -1,3 +1,5 @@
-<form action='POST'>
+<form method='POST'>
+{% csrf_token %}
 {{form}}
+<input type="submit">
 </form>
