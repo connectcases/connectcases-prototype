@@ -76,7 +76,12 @@ class Device(models.Model):
     patient = models.ForeignKey(
         'Patient',
         on_delete=models.CASCADE,
+        blank=False,
+        null=False,
     )
 
 class Patient(models.Model):
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
