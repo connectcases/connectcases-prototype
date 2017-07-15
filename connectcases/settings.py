@@ -25,7 +25,7 @@ SECRET_KEY = '!q@uw64-w#st5+cs1*v7%$mb_6s2$5o4+%y*im^gk-g3+)&kmn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['connectcases-prototype.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'connectcases-prototype.herokuapp.com']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'connectcases',
 ]
 
 MIDDLEWARE = [
