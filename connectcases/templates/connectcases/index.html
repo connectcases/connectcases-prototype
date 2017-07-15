@@ -3,6 +3,9 @@
 
 {% block content %}
 
-<a href="{% url 'device' %}">New Device</a>
+<ul>
+    <li><a href="{% url 'device' %}">New Device</a></li>
+    <li><a href="{% url 'devices' %}">All Ordered Devicies</a></li>
+</ul>
 
 {% endblock %}

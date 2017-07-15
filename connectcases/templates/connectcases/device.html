@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form action="POST">
+<form method="POST">
     {% csrf_token %}
     {{form|bootstrap}}
     <input type="submit" class="btn btn-primary" value="Post">

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import View
+from django.views.generic import View, ListView
 
 from .models import Device
 from .forms import DeviceForm
@@ -19,10 +19,17 @@ class DeviceView(View):
         return render(request, 'connectcases/device.html', {'form': form})
 
     def post(self, request, device_id=None):
-        form = DeviceForm(request.POST)
+        if device_id:
+            device = get_object_or_404(Device, id=device_id)
+            form = DeviceForm(request.POST, instance=device)
+        else:
+            form = DeviceForm(request.POST)
 
         if form.is_valid():
             device = form.save()
             return redirect('device', device_id=device.id)
         else:
             return render(request, 'connectcases/device.html', {'form': form})
+
+class DeviceListView(ListView):
+    model = Device
