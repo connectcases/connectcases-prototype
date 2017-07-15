@@ -1,11 +1,12 @@
 {% extends "connectcases/base.html" %}
+{% load bootstrap %}
 
 {% block content %}
 
-<form method="POST">
-{% csrf_token %}
-{{form}}
-<input type="submit" class="btn btn-primary" value="Post">
+<form action="POST">
+    {% csrf_token %}
+    {{form|bootstrap}}
+    <input type="submit" class="btn btn-primary" value="Post">
 </form>
 
 {% endblock %}
