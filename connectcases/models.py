@@ -72,3 +72,11 @@ class Device(models.Model):
         max_length=2,
         choices=COLET_TO,
     )
+
+    patient = models.ForeignKey(
+        'Patient',
+        on_delete=models.CASCADE,
+    )
+
+class Patient(models.Model):
+    name = models.CharField(max_length=200)
