@@ -7,20 +7,36 @@ class DeviceForm(ModelForm):
         exclude = []
 
     def clean_upper_colet_from(self):
-        if self._missing_upper_teeth(self.cleaned_data) and self.cleaned_data['upper_colet_from'] is None:
+        data = self.cleaned_data['upper_colet_from']
+
+        if self._missing_upper_teeth(self.cleaned_data) and data is None:
             raise ValidationError("This is required when upper teeth are missing")
+
+        return data
 
     def clean_upper_colet_to(self):
-        if self._missing_upper_teeth(self.cleaned_data) and self.cleaned_data['upper_colet_to'] is None:
+        data = self.cleaned_data['upper_colet_to']
+
+        if self._missing_upper_teeth(self.cleaned_data) and data is None:
             raise ValidationError("This is required when upper teeth are missing")
 
+        return data
+
     def clean_lower_colet_from(self):
-        if self._missing_lower_teeth(self.cleaned_data) and self.cleaned_data['lower_colet_from'] is None:
+        data = self.cleaned_data['lower_colet_from']
+
+        if self._missing_lower_teeth(self.cleaned_data) and data is None:
             raise ValidationError("This is required when lower teeth are missing")
 
+        return data
+
     def clean_lower_colet_to(self):
-        if self._missing_lower_teeth(self.cleaned_data) and self.cleaned_data['lower_colet_to'] is None:
+        data = self.cleaned_data['lower_colet_to']
+
+        if self._missing_lower_teeth(self.cleaned_data) and data is None:
             raise ValidationError("This is required when lower teeth are missing")
+ 
+        return data
 
     def clean(self):
         cleaned_data = super(DeviceForm, self).clean()
