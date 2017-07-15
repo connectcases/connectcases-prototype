@@ -40,11 +40,15 @@ class Device(models.Model):
     upper_colet_from = models.CharField(
         max_length=2,
         choices=COLET_FROM,
+        null=True,
+        blank=True,
     )
 
     upper_colet_to = models.CharField(
         max_length=2,
         choices=COLET_TO,
+        null=True,
+        blank=True,
     )
 
     lower_left_1 = models.BooleanField(default=False)
@@ -66,11 +70,15 @@ class Device(models.Model):
     lower_colet_from = models.CharField(
         max_length=2,
         choices=COLET_FROM,
+        null=True,
+        blank=True,
     )
 
     lower_colet_to = models.CharField(
         max_length=2,
         choices=COLET_TO,
+        null=True,
+        blank=True,
     )
 
     patient = models.ForeignKey(
