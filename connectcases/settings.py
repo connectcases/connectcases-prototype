@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'connectcases-prototype.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'collectfast',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +127,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 AWS_ACCESS_KEY_ID = 'AKIAJ5QDURIGNFEQ4TZA'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'connectcases-assets'
+
+AWS_PRELOAD_METADATA = True
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
