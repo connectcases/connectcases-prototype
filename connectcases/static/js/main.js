@@ -53,7 +53,7 @@ var setUpColetLines = function setUpColetLines(){
         }
     };
 
-    $('select').on('change', function(){
+    $('select[name*="_colet_"]').on('change', function(){
         hideColetLines();
 
         if( $upper_colet_from.val() && $upper_colet_to.val() ){
@@ -80,6 +80,8 @@ var setUpColetLines = function setUpColetLines(){
             );
         }
     });
+
+    $upper_colet_from.trigger('change');
 };
 
 $(function(){
