@@ -11,6 +11,16 @@ def generate_choices(jaw, side):
         )
     return l
 
+TEETH_CHOICES = [
+    ('01', 'Standard'),
+    ('02', 'High Quality'),
+]
+
+BASEPLATE_CHOICES = [
+    ('AC', 'Acrylic'),
+    ('HI', 'High Impact Acrylic'),
+]
+
 class Device(models.Model):
     upper_left_1 = models.BooleanField(default=False)
     upper_left_2 = models.BooleanField(default=False)
@@ -80,6 +90,18 @@ class Device(models.Model):
     )
 
     photo = models.ImageField(blank=True, null=True)
+
+    teeth = models.CharField(
+        max_length=2,
+        choices=TEETH_CHOICES,
+        default='01',
+    )
+
+    baseplate = models.CharField(
+        max_length=2,
+        choices=BASEPLATE_CHOICES,
+        default='AC',
+    )
 
     extra_info = models.TextField(blank=True, null=True)
 
