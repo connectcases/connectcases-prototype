@@ -84,9 +84,46 @@ var setUpColetLines = function setUpColetLines(){
     $upper_colet_from.trigger('change');
 };
 
+var setUpDraggableColets = function setUpDraggableColets(){
+    var $diagram = $('#teeth-diagram');
+    var colet_dragging_from = {};
+
+    $('path[tooth]', $diagram).on('mousedown', function(e){
+        colet_dragging_from = {
+            tooth: $(this).attr('tooth'),
+            jaw: $(this).attr('jaw'),
+            side: $(this).attr('side')
+        };
+    }).on('mouseover', function(e){
+        if( colet_dragging_from.jaw == $(this).attr('jaw') ){
+            if( colet_dragging_from.side != $(this).attr('side') ){
+                if( colet_dragging_from.side == 'right'){
+                    var from = 'from';
+                    var to = 'to';
+                } else {
+                    var from = 'to';
+                    var to = 'from';
+                }
+
+                $('select[name="' + colet_dragging_from.jaw + '_colet_' + from + '"]')
+                    .val(colet_dragging_from.jaw + '_' + colet_dragging_from.side + '_' + colet_dragging_from.tooth)
+                    .change();
+                $('select[name="' + $(this).attr('jaw') + '_colet_' + to + '"]')
+                    .val($(this).attr('jaw') + '_' + $(this).attr('side') + '_' + $(this).attr('tooth'))
+                    .change();
+            }
+        }
+    }).on('mouseup', function(e){
+        colet_dragging_from = {};
+    });
+
+    $('select[name*="_colet_"]').parents('.form-group').hide();
+};
+
 $(function(){
     if( $('#teeth-diagram').length ){
         setUpClickableTeeth();
         setUpColetLines();
+        setUpDraggableColets();
     }
 });
