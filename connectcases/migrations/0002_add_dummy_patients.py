@@ -5,7 +5,7 @@ def forwards_func(apps, schema_editor):
     db_alias = schema_editor.connection.alias
     Patient.objects.using(db_alias).bulk_create([
         Patient(name="Tom"),
-        Patient(name="Dick"),
+        Patient(name="David"),
         Patient(name="Harry"),
     ])
 
