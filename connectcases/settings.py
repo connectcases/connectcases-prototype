@@ -122,18 +122,10 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-AWS_ACCESS_KEY_ID = 'AKIAJ5QDURIGNFEQ4TZA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'connectcases-assets'
-
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-#STATIC_URL = '/static/'
-STATIC_URL = 'http://connectcases-assets.s3-website-eu-west-1.amazonaws.com/'
+STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -150,4 +142,4 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
