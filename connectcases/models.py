@@ -88,6 +88,8 @@ class Device(models.Model):
         null=False,
     )
 
+    photo = models.ImageField(blank=True, null=True)
+
     def __str__(self):
         return '({}) Device for {}'.format(self.id, self.patient.name)
 

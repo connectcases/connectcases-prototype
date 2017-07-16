@@ -21,9 +21,9 @@ class DeviceView(View):
     def post(self, request, device_id=None):
         if device_id:
             device = get_object_or_404(Device, id=device_id)
-            form = DeviceForm(request.POST, instance=device)
+            form = DeviceForm(request.POST, request.FILES, instance=device)
         else:
-            form = DeviceForm(request.POST)
+            form = DeviceForm(request.POST, request.FILES)
 
         if form.is_valid():
             device = form.save()
