@@ -3,18 +3,16 @@
 
 {% block content %}
 
-<div class='container'>
-    <div class='row'>
-        <div class='col-sm-5'>
-    {% include "connectcases/teeth.svg" %}
-        </div>
-        <div class='col-sm-6 col-sm-push-1'>
-            <form method="POST">
-                {% csrf_token %}
-                {{form|bootstrap}}
-                <input type="submit" class="btn btn-primary" value="Post">
-            </form>
-        </div>
+<div class="row">
+    <div class="col-sm-5">
+{% include "connectcases/teeth.svg" %}
+    </div>
+    <div class="col-sm-6 col-sm-push-1">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|bootstrap}}
+            <input type="submit" class="btn btn-primary" value="Post">
+        </form>
     </div>
 </div>
 

@@ -1,12 +1,27 @@
 {% extends "connectcases/base.html" %}
 
 {% block content %}
-<h1>All Devices</h1>
+<h1>All Ordered Devices</h1>
 
-<ul>
-{% for device in object_list %}
-<li><a href="{% url 'device' device.id %}">{{device}}</a></li>
-{% endfor %}
-</ul>
+<table class="table table-striped orders-table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Patient</th>
+            <th>Teeth</th>
+            <th>Baseplate</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for device in devices %}
+        <tr>
+            <td><a href="{% url 'device' device.id %}">{{ device.id }}</a></td>
+            <td><a href="{% url 'device' device.id %}">{{ device.patient.name }}</a></td>
+            <td><a href="{% url 'device' device.id %}">{{ device.teeth }}</a></td>
+            <td><a href="{% url 'device' device.id %}">{{ device.baseplate }}</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
