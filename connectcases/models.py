@@ -1,24 +1,15 @@
 from django.db import models
 
-COLET_FROM = [
-    ('L1', 'LEFT 1'),
-    ('L2', 'LEFT 2'),
-    ('L3', 'LEFT 3'),
-    ('L4', 'LEFT 4'),
-    ('L5', 'LEFT 5'),
-    ('L6', 'LEFT 6'),
-    ('L7', 'LEFT 7'),
-]
-
-COLET_TO = [
-    ('R1', 'RIGHT 1'),
-    ('R2', 'RIGHT 2'),
-    ('R3', 'RIGHT 3'),
-    ('R4', 'RIGHT 4'),
-    ('R5', 'RIGHT 5'),
-    ('R6', 'RIGHT 6'),
-    ('R7', 'RIGHT 7'),
-]
+def generate_choices(jaw, side):
+    l = []
+    for tooth in range(1, 8):
+        l.append(
+            (
+                '{}_{}_{}'.format(jaw, side, tooth),
+                '{} {}'.format(side.upper(), tooth),
+            )
+        )
+    return l
 
 class Device(models.Model):
     upper_left_1 = models.BooleanField(default=False)
@@ -38,15 +29,15 @@ class Device(models.Model):
     upper_right_7 = models.BooleanField(default=False)
 
     upper_colet_from = models.CharField(
-        max_length=2,
-        choices=COLET_FROM,
+        max_length=13,
+        choices=generate_choices('upper', 'right'),
         null=True,
         blank=True,
     )
 
     upper_colet_to = models.CharField(
-        max_length=2,
-        choices=COLET_TO,
+        max_length=13,
+        choices=generate_choices('upper', 'left'),
         null=True,
         blank=True,
     )
@@ -68,15 +59,15 @@ class Device(models.Model):
     lower_right_7 = models.BooleanField(default=False)
 
     lower_colet_from = models.CharField(
-        max_length=2,
-        choices=COLET_FROM,
+        max_length=13,
+        choices=generate_choices('lower', 'right'),
         null=True,
         blank=True,
     )
 
     lower_colet_to = models.CharField(
-        max_length=2,
-        choices=COLET_TO,
+        max_length=13,
+        choices=generate_choices('lower', 'left'),
         null=True,
         blank=True,
     )

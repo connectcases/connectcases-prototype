@@ -5,6 +5,7 @@
         stroke: #000;
         stroke-linecap: round;
         stroke-linejoin: round;
+        cursor: pointer;
 
         &:hover {
             fill: #eee;
@@ -23,6 +24,22 @@
 
         &:focus {
             stroke: #00f;
+        }
+    }
+}
+
+#teeth-lower-lines,
+#teeth-upper-lines {
+    path {
+        fill: none;
+        stroke: #D0011B;
+        cursor: default;
+        display: none;
+
+        &:hover,
+        &:focus {
+            fill: none;
+            stroke: #D0011B;
         }
     }
 }
