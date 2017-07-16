@@ -32,4 +32,4 @@ class DeviceView(View):
             return render(request, 'connectcases/device.html', {'form': form})
 
 class DeviceListView(ListView):
-    model = Device
+    queryset = Device.objects.order_by('id')
