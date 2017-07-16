@@ -21,6 +21,14 @@ BASEPLATE_CHOICES = [
     ('HI', 'High Impact Acrylic'),
 ]
 
+STATUS_CHOICES = [
+    (1, "Awaiting impression"),
+    (2, "Impression received"),
+    (3, "Processing in lab"),
+    (4, "Awaiting device"),
+    (5, "Device received"),
+]
+
 class Device(models.Model):
     upper_left_1 = models.BooleanField(default=False)
     upper_left_2 = models.BooleanField(default=False)
@@ -104,6 +112,11 @@ class Device(models.Model):
     )
 
     extra_info = models.TextField(blank=True, null=True)
+
+    status = models.IntegerField(
+        choices=STATUS_CHOICES,
+        default=1,
+    )
 
     def __str__(self):
         return '({}) Device for {}'.format(self.id, self.patient.name)

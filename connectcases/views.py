@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View, ListView
 
-from .models import Device, TEETH_CHOICES, BASEPLATE_CHOICES
+from .models import Device, TEETH_CHOICES, BASEPLATE_CHOICES, STATUS_CHOICES
 from .forms import DeviceForm
 
 class IndexView(View):
@@ -36,9 +36,11 @@ class DeviceListView(ListView):
     def get(self, request):
         teeth_choices = dict(TEETH_CHOICES)
         bp_choices = dict(BASEPLATE_CHOICES)
+        status_choices = dict(STATUS_CHOICES)
         devices = Device.objects.order_by('id')
         for dev in devices:
             dev.teeth = teeth_choices.get(dev.teeth)
             dev.baseplate = bp_choices.get(dev.baseplate)
+            dev.status_text = status_choices.get(dev.status)
         ctx = { 'devices': devices }
         return render(request, 'connectcases/device_list.html', ctx)
